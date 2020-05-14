@@ -1,4 +1,4 @@
-const yearPickerVersion = "1.0.0";
+const yearPickerVersion = "1.0.1";
 const yearPickerAppName = "YearPicker";
 
 var defaults = {
@@ -37,7 +37,7 @@ var defaults = {
   pick: null
 };
 
-var window = typeof window !== "undefained" ? window : {};
+var window = typeof window !== "undefined" ? window : {};
 
 var event_click = "click.";
 var event_focus = "focus.";
@@ -237,7 +237,7 @@ function isNumber(value) {
   return typeof value === "number" && value !== "NaN";
 }
 
-function isUndefained(value) {
+function isUndefined(value) {
   return typeof value === "undefined";
 }
 
@@ -266,7 +266,7 @@ function proxy(fn, context) {
 ("use strict");
 
 var _setupError = "YearPicker Error";
-if (isUndefained(jQuery)) {
+if (isUndefined(jQuery)) {
   alert(`${yearPickerAppName} ${yearPickerVersion} requires jQuery`);
 }
 
@@ -404,6 +404,7 @@ var Yearpicker = (function() {
       } else {
         $this.html(value);
       }
+	  $this.trigger("change");
     },
     trigger: function(type, data) {
       var e = $.Event(type, data);
@@ -534,7 +535,7 @@ if ($.fn) {
       }
     });
 
-    return !isUndefained(result) ? result : this;
+    return !isUndefined(result) ? result : this;
   };
   $.fn.yearpicker.constractor = Yearpicker;
 }
